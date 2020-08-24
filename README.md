@@ -1,62 +1,127 @@
-# Phaser 3 React Webpack Project Template
+# PAC MANY
 
-Built from the [https://github.com/photonstorm/phaser3-project-template](Phaser 3 Template), this boilerplate gives you Phaser and React out of the box. Full details on [Integrating React and Phaser 3 Tutorial](https://medium.com/@Tnodes/integrating-react-and-phaser-3-tutorial-eb96717d4a9d). 
+- PAC MAN with many people -
 
-ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/). Includes hot-reloading for development and production-ready builds.
+2006 pepperlint-mocha
 
-Loading images via JavaScript module `import` is also supported.
+# Overview
 
-## Quickstart
+Real time multiplayer Pac Man game in the browser for up to 4 people.
 
-`git clone https://github.com/nodes777/phaser3-react-template`
-`npm install`
-`npm start`
+# MVP
 
-## Requirements
+A player should be able to play game:
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+1. as a single player
+2. in a group of up to 4 at once.
 
-## Available Commands
+Player should be able to:
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
-| `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
+1. Create a single game instance
+2. Create a multi game instance
+3. Join a multi game with a roomId
 
-## Writing Code
+Game should have these qualities:
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development
-server by running `npm start`.
+- Generate map and populate with interactive sprites
+- 4 people playing at once with no lag or stutter
+- Each player is a pac man that can eat pellets and power ups
+- Players compete for highest score / pellet percentage
+- Players immediately lose when HP goes below 0
+- Game ends when board is empty or all players get killed
+- Collisions between players
+- Exits that enter at opposite sides of board
+- Score count
+- Ghosts that move sporadically and target all players
+- When ghost hits player during normal state, player loses HP
+- When ghost hits player in power-up state, ghost is eaten
 
+## POC
 
-After starting the development server with `npm start`, you can edit any files in the `src` folder
-and webpack will automatically recompile and reload your server (available at `http://localhost:8080`
-by default).
+- Socket connection, 4 people can join/unjoin room
+- Basic canvas rendered with static game map
 
-## Customizing Template
+# Stretch Goals
 
-### Babel
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you
-want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently
-targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
+- more maps
+- team games
+- voice chat
+- chatbox
+- video integration
+- mobile app
 
-  ```
-  "browsers": [
-    ">0.25%",
-    "not ie 11",
-    "not op_mini all"
-  ]
-  ```
+# Stack
 
-### Webpack
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can
-modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create
-new configuration files and target them in specific npm tasks inside of `package.json'.
+- Phaser
+- React
+- Express
+- Socket.io
+- Database TBD
 
-## Deploying Code
-After you run the `npm run build` command, your code will be built into a single bundle located at 
-`dist/bundle.min.js` along with any other assets you project depended. 
+# Tier 1: Game Completion
 
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), 
-you should be able to open `http://mycoolserver.com/index.html` and play your game.
+## As a designer, I want to have:
+
+- Working sound design
+- All assets created and accessible via public folder
+- Rendered game window in browser
+
+## As an engineer, I want to be able to:
+
+- Create a game lobby
+- Have one 4 player room active
+- Run tests to verify funtionality
+- Tweak elements without major reworks
+- Serve up data on safe and secure API
+
+## As a player, I want to be able to:
+
+- Visit site and successfully run game on local-host
+- Select a character
+- Move character Up, Down, Left, Right with fluid acceleration/glide/control
+- Dimish health meter of other characters
+- Lose life if my health bar gets too low
+- Hear sounds corresponding to what's happening on screen
+
+# Tier 2: Connectivity
+
+## As a designer, I want to have:
+
+- UI that allows users/players to create game instance
+- UI that demonstrates controls and game rules clearly
+- Random or custom tags for players
+- Game score shown on window
+
+## As an engineer, I want to be able to:
+
+- Run secure connection with 4 player rooms
+- Have one 4 player room via sockets
+- Generate session w/sockets and access by room Id
+- Collect player experience data to influence development
+
+## As a player, I want to be able to:
+
+- Invite friends to game
+- Play with 3 other people in real time
+
+## Tier 3: Polish / Stretch Goals
+
+## As a designer, I want to have:
+
+- Detailed character models
+- More character sprites
+- More stages
+- A selection of music
+
+## As an engineer, I want to be able to:
+
+- Have fully working build on browser
+- Mobile app buld
+
+## As a player, I want to be able to:
+
+- Create an account
+- Have logged in experience
+- See player profile with stats and records
+- Sync my game account with social media
+- Invite friends through FB/Twitter/Email
